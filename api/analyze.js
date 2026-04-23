@@ -5,11 +5,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const apiKey = req.headers['x-api-key'] || process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
-    return res.status(401).json({
-      error: 'No API key provided. Add your Anthropic API key in the Settings panel.',
-    });
+    return res.status(401).json({ error: 'Server API key not configured.' });
   }
 
   const { imageBase64 } = req.body;
