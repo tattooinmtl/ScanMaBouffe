@@ -1,0 +1,1 @@
+an app that scans a food label, uses Claude Haiku to perform a web search to retrieve all ingredients, and then lists any ingredients that are toxic or not for human consumption. If the results from the label scan are insufficient or inaccurate, the app should try using the barcode to improve the results.
