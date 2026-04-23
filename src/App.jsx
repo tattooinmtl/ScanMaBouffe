@@ -9,7 +9,7 @@ export default function App() {
   const [error, setError] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
 
-  const handleScan = async ({ imageBase64, barcode }) => {
+  const handleScan = async (imageBase64) => {
     const apiKey = loadApiKey();
     setIsAnalyzing(true);
     setError(null);
@@ -21,7 +21,7 @@ export default function App() {
       const response = await fetch('/api/analyze', {
         method: 'POST',
         headers,
-        body: JSON.stringify({ imageBase64, barcode }),
+        body: JSON.stringify({ imageBase64 }),
       });
 
       const data = await response.json();
@@ -44,7 +44,7 @@ export default function App() {
         <div className="header-row">
           <div>
             <h1>Food Label Scanner</h1>
-            <p className="subtitle">Point at a label to check for harmful ingredients</p>
+            <p className="subtitle">Film the ingredients list on any package to check for harmful ingredients</p>
           </div>
           <button className="settings-btn" onClick={() => setShowSettings(true)} title="API Key Settings">
             ⚙
